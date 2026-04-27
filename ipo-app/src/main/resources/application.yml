@@ -1,0 +1,68 @@
+spring:
+  application:
+    name: ipo-application
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    timeout: 60000
+    database: 0
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1ms
+    ssl: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: all
+      retries: 3
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: ipo-group
+      auto-offset-reset: earliest
+
+server:
+  port: 8080
+
+cache:
+  enabled: true
+  default-ttl: 10
+  short-ttl: 5
+  long-ttl: 60
+  cache-null-values: false
+  policies:
+    company:
+      ttl: 30
+      cache-null: false
+    ipo:
+      ttl: 20
+      cache-null: false
+    investor:
+      ttl: 15
+      cache-null: false
+    investment:
+      ttl: 10
+      cache-null: false
+
+logging:
+  level:
+    root: INFO
+    com.ipo: DEBUG
