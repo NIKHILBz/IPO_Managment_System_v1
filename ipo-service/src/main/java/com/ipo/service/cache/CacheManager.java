@@ -3,10 +3,10 @@ package com.ipo.service.cache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+
 import org.slf4j.*;
 import java.util.concurrent.TimeUnit;
 
-@Slf4j
 @Component
 public class CacheManager {
 
